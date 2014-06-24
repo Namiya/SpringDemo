@@ -14,7 +14,8 @@ public class SpringDemo {
 	public static void main(String[] args) {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml"); //".xml" file should be put under src/../resources
-		MessageBean messageBean = (MessageBean) context.getBean("messagebean");
+		//MessageBean messageBean = (MessageBean) context.getBean("messagebean");
+		MessageBean messageBean = (MessageBean) context.getBean("messagebean-alias");
 		messageBean.PrintMessage();
 	}
 	

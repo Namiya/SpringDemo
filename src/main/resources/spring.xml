@@ -4,18 +4,19 @@
 <beans>
   
 	<bean id="messagebean" class="bean.MessageBean">
-	  <!-- <property name="type" value="2014: "/> -->
 	  <constructor-arg value="MESSAGE: "/>
 	  <constructor-arg value="2014"></constructor-arg>
-	  <property name="month" ref="month"/>
-	  <property name="date" ref="date"/>
+	  <property name="month">
+	  	<bean class="bean.MessageContent">
+			<property name="time" value="12"/>
+		</bean>
+	  </property>
+	  <property name="date">
+	  	<bean class="bean.MessageContent">
+			<property name="time" value="25"/>
+		</bean>
+	  </property>
 	</bean>
 
-	<bean id="month" class="bean.MessageContent">
-		<property name="time" value="12"/>
-	</bean>
-	<bean id="date" class="bean.MessageContent">
-		<property name="time" value="25"/>
-	</bean>
-
+	<alias name="messagebean" alias="messagebean-alias"/>
 </beans>

@@ -11,6 +11,11 @@ public class MessageBean implements ApplicationContextAware, BeanNameAware{
 	private MessageContent month;
 	private MessageContent date;
 	private ApplicationContext context;
+	
+	public MessageBean()
+	{
+		
+	}
 
 	public MessageContent getMonth() {
 		return month;
@@ -53,6 +58,14 @@ public class MessageBean implements ApplicationContextAware, BeanNameAware{
 		return type;
 	}
 
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
 	@Override
 	public void setBeanName(String name) {
 		System.out.println("Bean Name: " + name);
@@ -67,9 +80,5 @@ public class MessageBean implements ApplicationContextAware, BeanNameAware{
 	}
 
 
-
-/*	public void setType(String type) {
-		this.type = type;
-	}*/
 
 }

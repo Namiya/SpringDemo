@@ -3,9 +3,12 @@
 
 <beans>
   
-	<bean id="messagebean" class="bean.MessageBean" autowire="byName">
-	  <constructor-arg value="MESSAGE: "/>
-	  <constructor-arg value="2014"></constructor-arg>
+  	<bean id="parentmessagebean" class="bean.MessageBean">
+  		<property name="type" value="MESSAGE:"/>
+  		<property name="number" value="2014"/>
+  	</bean>
+  	
+	<bean id="messagebean" class="bean.MessageBean" autowire="byName" parent="parentmessagebean">
 	</bean>
 	
 	<bean id="month" class="bean.MessageContent">

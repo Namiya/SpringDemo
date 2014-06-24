@@ -4,7 +4,9 @@
 <beans>
   
   <bean id="messagebean" class="bean.MessageBean">
-    <property name="type" value="2014: "/>
+    <!-- <property name="type" value="2014: "/> -->
+    <constructor-arg value="MESSAGE: "/>
+    <constructor-arg value="2014"></constructor-arg>
   </bean>
 
 

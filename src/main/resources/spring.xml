@@ -19,4 +19,6 @@
  	</bean>
 
 	<alias name="messagebean" alias="messagebean-alias"/>
+	
+	<bean class="bean.DisplayNameBeanPostProcessor"/>
 </beans>

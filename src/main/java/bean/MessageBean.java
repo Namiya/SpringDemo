@@ -2,15 +2,18 @@ package bean;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-public class MessageBean implements ApplicationContextAware, BeanNameAware{
+public class MessageBean implements ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean{
 	private String type;
 	private int number;
 	private MessageContent month;
 	private MessageContent date;
 	private ApplicationContext context;
+	private String beanName;
 	
 	public MessageBean()
 	{
@@ -68,6 +71,7 @@ public class MessageBean implements ApplicationContextAware, BeanNameAware{
 
 	@Override
 	public void setBeanName(String name) {
+		beanName = name;
 		System.out.println("Bean Name: " + name);
 		
 	}
@@ -79,6 +83,26 @@ public class MessageBean implements ApplicationContextAware, BeanNameAware{
 		
 	}
 
+	@Override
+	public void destroy() throws Exception {
+		System.out.println(beanName + ": DisposableBean destroy method called.");
+		
+	}
 
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println(beanName + ":InitalizingBean init method called.");
+		
+	}
+
+	public void myInit()
+	{
+		System.out.println(beanName + "'s Init method.");
+	}
+	
+	public void clearUp()
+	{
+		System.out.println(beanName + "'s cleanUp method.");
+	}
 
 }

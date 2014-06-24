@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 
-<beans>
+<beans> <!-- defalut-init-method="myInit" default-destroy-method="clearUp"  -->
   
   	<bean id="parentmessagebean" class="bean.MessageBean">
   		<property name="type" value="MESSAGE:"/>
   		<property name="number" value="2014"/>
   	</bean>
   	
-	<bean id="messagebean" class="bean.MessageBean" autowire="byName" parent="parentmessagebean">
+	<bean id="messagebean" class="bean.MessageBean" autowire="byName" parent="parentmessagebean" init-method="myInit" destroy-method="clearUp">
 	</bean>
 	
 	<bean id="month" class="bean.MessageContent">

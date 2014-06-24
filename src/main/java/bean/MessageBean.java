@@ -1,10 +1,16 @@
 package bean;
 
-public class MessageBean {
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
+public class MessageBean implements ApplicationContextAware, BeanNameAware{
 	private String type;
 	private int number;
 	private MessageContent month;
 	private MessageContent date;
+	private ApplicationContext context;
 
 	public MessageContent getMonth() {
 		return month;
@@ -45,6 +51,19 @@ public class MessageBean {
 
 	public String getType() {
 		return type;
+	}
+
+	@Override
+	public void setBeanName(String name) {
+		System.out.println("Bean Name: " + name);
+		
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext context)
+			throws BeansException {
+		this.context = context;
+		
 	}
 
 

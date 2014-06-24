@@ -12,10 +12,10 @@
 	</bean>
 	
 	<bean id="month" class="bean.MessageContent">
- 		<property name="time" value="12"/>
+ 		<property name="time" value="${month.time}"/>
  	</bean>
  	<bean id="date" class="bean.MessageContent">
- 		<property name="time" value="25"/>
+ 		<property name="time" value="${date.time}"/>
  	</bean>
 
 	<alias name="messagebean" alias="messagebean-alias"/>
@@ -23,4 +23,8 @@
 	<bean class="bean.DisplayNameBeanPostProcessor"/>
 	
 	<bean class="bean.MyBeanFactoryPP"/>
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="messageconfig.properties"/>
+	</bean>
 </beans>

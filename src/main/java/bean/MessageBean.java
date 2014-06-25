@@ -4,6 +4,8 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -61,10 +63,12 @@ public class MessageBean implements ApplicationContextAware, BeanNameAware, Init
 		return type;
 	}
 
+	@Required
 	public void setType(String type) {
 		this.type = type;
 	}
 
+	@Autowired
 	public void setNumber(int number) {
 		this.number = number;
 	}

@@ -19,6 +19,8 @@ public class SpringDemo {
 		context.registerShutdownHook();
 		MessageBean messageBean = (MessageBean) context.getBean("messagebean-alias");
 		messageBean.PrintMessage();
+		
+		System.out.println(context.getMessage("greeting", null, "Default Greeting", null));
 	}
 	
 	@SuppressWarnings("unused")

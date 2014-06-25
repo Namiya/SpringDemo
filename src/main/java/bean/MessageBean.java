@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.MessageSource;
 
 public class MessageBean implements ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean{
 	private String type;
@@ -16,6 +17,8 @@ public class MessageBean implements ApplicationContextAware, BeanNameAware, Init
 	private MessageContent date;
 	private ApplicationContext context;
 	private String beanName;
+	@Autowired
+	private MessageSource messageSource;
 	
 	public MessageBean()
 	{
@@ -57,6 +60,7 @@ public class MessageBean implements ApplicationContextAware, BeanNameAware, Init
 	public void PrintMessage()
 	{
 		System.out.println(getType() + "time " + getNumber() + "/" + getMonth().getTime() + "/" + getDate().getTime());
+		System.out.println(this.messageSource.getMessage("MessageBeanMsg", null, "Default MessageBean Msg", null));
 	}
 
 	public String getType() {
@@ -107,6 +111,14 @@ public class MessageBean implements ApplicationContextAware, BeanNameAware, Init
 	public void clearUp()
 	{
 		System.out.println(beanName + "'s cleanUp method.");
+	}
+
+	public MessageSource getMessageSource() {
+		return messageSource;
+	}
+
+	public void setMessageSource(MessageSource messageSource) {
+		this.messageSource = messageSource;
 	}
 
 }

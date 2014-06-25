@@ -3,6 +3,9 @@ package bean;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MessageContent {
 	private int time;
 

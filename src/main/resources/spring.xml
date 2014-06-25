@@ -35,6 +35,8 @@
 		<property name="location" value="messageconfig.properties"/>
 	</bean>
 	
+	<context:component-scan base-package="org.nayami"/>
+	
 <!-- 	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" /> -->
 	

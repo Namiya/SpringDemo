@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -10,6 +8,8 @@
  
 	<context:annotation-config /> <!-- defalut-init-method="myInit" default-destroy-method="clearUp"  -->
   
+  	<context:component-scan base-package="org.namiya"/>
+  	
   	<bean id="parentmessagebean" class="bean.MessageBean">
   		<property name="type" value="MESSAGE:"/>
   		<property name="number" value="2014"/>
@@ -34,9 +34,7 @@
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="messageconfig.properties"/>
 	</bean>
-	
-	<context:component-scan base-package="org.nayami"/>
-	
+
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
 		<list>
@@ -44,6 +42,8 @@
 		</list>
 		</property>
 	</bean>
+	
+	<bean class="bean.MyEventListener"/>
 	
 <!-- 	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" /> -->

@@ -21,6 +21,7 @@ public class SpringDemo {
 		messageBean.PrintMessage();
 		
 		System.out.println(context.getMessage("greeting", null, "Default Greeting", null));
+		
 	}
 	
 	@SuppressWarnings("unused")

@@ -8,9 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Controller;
 
-public class MessageBean implements ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean{
+@Controller
+public class MessageBean implements ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean, ApplicationEventPublisherAware {
 	private String type;
 	private int number;
 	private MessageContent month;
@@ -19,6 +23,7 @@ public class MessageBean implements ApplicationContextAware, BeanNameAware, Init
 	private String beanName;
 	@Autowired
 	private MessageSource messageSource;
+	private ApplicationEventPublisher publisher;
 	
 	public MessageBean()
 	{
@@ -61,6 +66,8 @@ public class MessageBean implements ApplicationContextAware, BeanNameAware, Init
 	{
 		System.out.println(getType() + "time " + getNumber() + "/" + getMonth().getTime() + "/" + getDate().getTime());
 		System.out.println(this.messageSource.getMessage("MessageBeanMsg", null, "Default MessageBean Msg", null));
+		MsgPrintEvent printEvent = new MsgPrintEvent(this);
+		publisher.publishEvent(printEvent);
 	}
 
 	public String getType() {
@@ -119,6 +126,12 @@ public class MessageBean implements ApplicationContextAware, BeanNameAware, Init
 
 	public void setMessageSource(MessageSource messageSource) {
 		this.messageSource = messageSource;
+	}
+
+	@Override
+	public void setApplicationEventPublisher(ApplicationEventPublisher publisher) {
+		this.publisher = publisher;
+		
 	}
 
 }
